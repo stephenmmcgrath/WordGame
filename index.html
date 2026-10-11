@@ -1,212 +1,196 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.6">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            text-align: center;
+        }
+        .game-container {
+            width: 300px;
+            margin: 20px auto;
+        }
+        .input-container {
+            text-align: center;
+        }
+        .guess-container {
+            margin-top: 20px;
+        }
+        .guess-row {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .letter {
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            font-size: 24px;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+        }
+        .hint {
+            color: #ff8c00;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="en"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Word Game&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: Arial, sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 50px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.game-container {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 300px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 20px auto;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.input-container {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.guess-container {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.guess-row {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>justify-content: space-between;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.letter {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 50px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 50px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 50px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 24px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f0f0f0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-right: 10px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.hint {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #ff8c00;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 14px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;div class="game-container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2&gt;Word Game&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;Try to guess the secret five-letter word within six attempts.&lt;/p&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Input container --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="input-container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;select id="guess-letter1" name="guess-letter1"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Letters will be populated dynamically --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/select&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;select id="guess-letter2" name="guess-letter2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Letters will be populated dynamically --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/select&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;select id="guess-letter3" name="guess-letter3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Letters will be populated dynamically --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/select&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;select id="guess-letter4" name="guess-letter4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Letters will be populated dynamically --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/select&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;select id="guess-letter5" name="guess-letter5"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Letters will be populated dynamically --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/select&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;button id="submit-guess"&gt;Submit&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Feedback will be shown here --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Guess container --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="guess-container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Guess rows will be populated dynamically --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1">&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>// List of words for the game</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const WORDS = [</p>
-<p class="p1"><span class="Apple-converted-space">        </span>"apple", "orange", "banana", "grape", "lemon",<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// ... Add more words as needed</p>
-<p class="p1"><span class="Apple-converted-space">    </span>];</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>let currentRow = 0;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>let guessWords = [];</p>
-<p class="p1"><span class="Apple-converted-space">    </span>let usedWords = [];</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>// Populate the letter select elements</p>
-<p class="p1"><span class="Apple-converted-space">    </span>function populateLetters() {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const letters = 'abcdefghijklmnopqrstuvwxyz';</p>
-<p class="p1"><span class="Apple-converted-space">        </span>for (let i = 0; i &lt; 26; i++) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const letter = letters[i];</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById(`guess-letter${i + 1}`).innerHTML += `&lt;option value="${letter}"&gt;${letter}&lt;/option&gt;`;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>// Initialize the game</p>
-<p class="p1"><span class="Apple-converted-space">    </span>function initializeGame() {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>populateLetters();</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('submit-guess').addEventListener('click', submitGuess);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>// Submit the guess</p>
-<p class="p1"><span class="Apple-converted-space">    </span>function submitGuess() {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const guess = [];</p>
-<p class="p1"><span class="Apple-converted-space">        </span>for (let i = 1; i &lt;= 5; i++) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>guess.push(document.getElementById(`guess-letter${i}`).value);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// Check if the guess is a valid word</p>
-<p class="p1"><span class="Apple-converted-space">        </span>if (!WORDS.includes(guess.join(''))) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>alert("Invalid word. Please enter a real five-letter English word.");</p>
-<p class="p1"><span class="Apple-converted-space">            </span>return;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>if(usedWords.includes(guess.join(''))){</p>
-<p class="p1"><span class="Apple-converted-space">            </span>alert("You already guessed that word. Please try another one.");</p>
-<p class="p1"><span class="Apple-converted-space">            </span>return;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>usedWords.push(guess.join(''));</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>guessWords[currentRow] = guess.join('');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>currentRow++;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>if(currentRow === 6){</p>
-<p class="p1"><span class="Apple-converted-space">            </span>checkWord();</p>
-<p class="p1"><span class="Apple-converted-space">            </span>return;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>resetGuessContainer();</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>// Check the word against the secret word</p>
-<p class="p1"><span class="Apple-converted-space">    </span>function checkWord() {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const secretWord = WORDS[Math.floor(Math.random() * WORDS.length)];</p>
-<p class="p1"><span class="Apple-converted-space">        </span>let feedback = "";</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>for(let i = 0; i &lt; 5; i++){</p>
-<p class="p1"><span class="Apple-converted-space">            </span>if(guessWords[currentRow - 1][i] === secretWord[i]){</p>
-<p class="p1"><span class="Apple-converted-space">                </span>feedback += "🟩";</p>
-<p class="p1"><span class="Apple-converted-space">            </span>} else if(secretWord.includes(guessWords[currentRow - 1][i])){</p>
-<p class="p1"><span class="Apple-converted-space">                </span>feedback += "🟨";</p>
-<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>feedback += "⬛";</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>guessWords[currentRow - 1].forEach((letter, index) =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const letterElement = document.getElementById(`letter${currentRow}-${index + 1}`);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>letterElement.innerHTML = `&lt;span style="background-color: #${feedback[index]}"&gt;${letter}&lt;/span&gt;`;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>if(feedback === "🟩🟩🟩🟩🟩"){</p>
-<p class="p1"><span class="Apple-converted-space">            </span>alert("Congratulations! You guessed the secret word!");</p>
-<p class="p1"><span class="Apple-converted-space">            </span>resetGame();</p>
-<p class="p1"><span class="Apple-converted-space">        </span>} else if(currentRow === 6){</p>
-<p class="p1"><span class="Apple-converted-space">            </span>alert(`Sorry, the secret word was "${secretWord}".`);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>resetGame();</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>// Reset the guess container</p>
-<p class="p1"><span class="Apple-converted-space">    </span>function resetGuessContainer() {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const guessRow = document.getElementById(`guess-${currentRow}`);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>if(!guessRow) return;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>for(let i = 1; i &lt;= 5; i++){</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const letterElement = document.getElementById(`letter${currentRow}-${i}`);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>letterElement.innerHTML = `&lt;span style="background-color: #f0f0f0"&gt;&amp;nbsp;&lt;/span&gt;`;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space"> </span>// Reset the game</p>
-<p class="p1"><span class="Apple-converted-space"> </span>function resetGame() {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>currentRow = 0;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>guessWords = [];</p>
-<p class="p1"><span class="Apple-converted-space">    </span>usedWords = [];</p>
-<p class="p1"><span class="Apple-converted-space">    </span>populateLetters();</p>
-<p class="p1"><span class="Apple-converted-space"> </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>const guessContainer = document.querySelector('.guess-container');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>while(guessContainer.firstChild) {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>guessContainer.removeChild(guessContainer.firstChild);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">// Initialize the game</p>
-<p class="p1">initializeGame();</p>
-<p class="p1">&lt;/script&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+
+<div class="game-container">
+    <h2>Word Game</h2>
+    <p>Try to guess the secret five-letter word within six attempts.</p>
+
+    <!-- Input container -->
+    <div class="input-container">
+        <div>
+            <select id="guess-letter1" name="guess-letter1">
+                <!-- Letters will be populated dynamically -->
+            </select>
+            <select id="guess-letter2" name="guess-letter2">
+                <!-- Letters will be populated dynamically -->
+            </select>
+            <select id="guess-letter3" name="guess-letter3">
+                <!-- Letters will be populated dynamically -->
+            </select>
+            <select id="guess-letter4" name="guess-letter4">
+                <!-- Letters will be populated dynamically -->
+            </select>
+            <select id="guess-letter5" name="guess-letter5">
+                <!-- Letters will be populated dynamically -->
+            </select>
+        </div>
+        <button id="submit-guess">Submit</button>
+        <!-- Feedback will be shown here -->
+    </div>
+
+    <!-- Guess container -->
+    <div class="guess-container">
+        <!-- Guess rows will be populated dynamically -->
+    </div>
+</div>
+
+<script>
+    // List of words for the game
+    const WORDS = [
+        "apple", "orange", "banana", "grape", "lemon", 
+        // ... Add more words as needed
+    ];
+
+    let currentRow = 0;
+    let guessWords = [];
+    let usedWords = [];
+
+    // Populate the letter select elements
+    function populateLetters() {
+        const letters = 'abcdefghijklmnopqrstuvwxyz';
+        for (let i = 0; i < 26; i++) {
+            const letter = letters[i];
+            document.getElementById(`guess-letter${i + 1}`).innerHTML += `<option value="${letter}">${letter}</option>`;
+        }
+    }
+
+    // Initialize the game
+    function initializeGame() {
+        populateLetters();
+        document.getElementById('submit-guess').addEventListener('click', submitGuess);
+    }
+
+    // Submit the guess
+    function submitGuess() {
+        const guess = [];
+        for (let i = 1; i <= 5; i++) {
+            guess.push(document.getElementById(`guess-letter${i}`).value);
+        }
+        
+        // Check if the guess is a valid word
+        if (!WORDS.includes(guess.join(''))) {
+            alert("Invalid word. Please enter a real five-letter English word.");
+            return;
+        }
+
+        if(usedWords.includes(guess.join(''))){
+            alert("You already guessed that word. Please try another one.");
+            return;
+        }
+
+        usedWords.push(guess.join(''));
+
+        guessWords[currentRow] = guess.join('');
+        currentRow++;
+
+        if(currentRow === 6){
+            checkWord();
+            return;
+        }
+
+        resetGuessContainer();
+    }
+
+    // Check the word against the secret word
+    function checkWord() {
+        const secretWord = WORDS[Math.floor(Math.random() * WORDS.length)];
+        let feedback = "";
+
+        for(let i = 0; i < 5; i++){
+            if(guessWords[currentRow - 1][i] === secretWord[i]){
+                feedback += "🟩";
+            } else if(secretWord.includes(guessWords[currentRow - 1][i])){
+                feedback += "🟨";
+            } else {
+                feedback += "⬛";
+            }
+        }
+
+        guessWords[currentRow - 1].forEach((letter, index) => {
+            const letterElement = document.getElementById(`letter${currentRow}-${index + 1}`);
+            letterElement.innerHTML = `<span style="background-color: #${feedback[index]}">${letter}</span>`;
+        });
+
+        if(feedback === "🟩🟩🟩🟩🟩"){
+            alert("Congratulations! You guessed the secret word!");
+            resetGame();
+        } else if(currentRow === 6){
+            alert(`Sorry, the secret word was "${secretWord}".`);
+            resetGame();
+        }
+    }
+
+    // Reset the guess container
+    function resetGuessContainer() {
+        const guessRow = document.getElementById(`guess-${currentRow}`);
+        if(!guessRow) return;
+        
+        for(let i = 1; i <= 5; i++){
+            const letterElement = document.getElementById(`letter${currentRow}-${i}`);
+            letterElement.innerHTML = `<span style="background-color: #f0f0f0">&nbsp;</span>`;
+        }
+    }
+
+ // Reset the game
+ function resetGame() {
+    currentRow = 0;
+    guessWords = [];
+    usedWords = [];
+    populateLetters();
+ }
+
+    const guessContainer = document.querySelector('.guess-container');
+    while(guessContainer.firstChild) {
+        guessContainer.removeChild(guessContainer.firstChild);
+    }
+}
+
+// Initialize the game
+initializeGame();
+</script>
+
 </body>
 </html>
